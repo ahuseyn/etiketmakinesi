@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    
+
+
+
+
 
     function theTxt(name) {
         var result;
