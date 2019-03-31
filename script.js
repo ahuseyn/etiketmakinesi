@@ -179,12 +179,12 @@ $(document).ready(function () {
             $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
         }
 
-
         $('#new').show();
 
-
-
+        $('#new').click(function () {
+            location.reload();
+        });
+        
     });
-
 
 });

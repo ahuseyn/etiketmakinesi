@@ -75,7 +75,7 @@
         #tags-comma {
             text-align: center;
         }
-        
+
         #tags-comma span {
             color: white;
         }
@@ -85,15 +85,16 @@
             padding: 5px 6px;
             margin: 6px;
             border: 1px solid #ced4da;
-            border-radius: 10px;
+            border-radius: 5px;
             text-transform: capitalize;
         }
 
         #new {
-            text-align: center;
+            display: block;
+            margin: auto;
+            margin-top: 30px;
 
         }
-
     </style>
 
     <div class="margin-50"></div>
@@ -108,8 +109,9 @@
         <h5 style="text-align: center;"><i class="icon fas fa-tag"></i><br>Etiket Makinesi</h5>
         <hr>
         <div class="margin-30"></div>
-        
+
         <div id="tags-comma"></div>
+        <button id="new" type="submit" class="btn btn-info mb-2" style="display: none">Yeni Analiz</button>
 
         <form>
 
@@ -124,7 +126,6 @@
             <div class="form-group butns">
                 <button id="tagan" type="submit" class="btn btn-info mb-2">Etiket Analizi</button>
                 <button id="freqan" type="submit" class="btn btn-primary mb-2">Frekans Analizi</button>
-                <button id="new" type="submit" class="btn btn-info mb-2" style="display: none">Yeni Analiz</button>
             </div>
 
         </form>
@@ -147,6 +148,4 @@
     <script src="script.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-</body>
-
-</html>
+</body></html>
