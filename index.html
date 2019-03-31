@@ -1,49 +1,120 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Frequency</title>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script src="p5.dom.min.js"></script>
-		<script src="script.js"></script>
-	</head>
-  
-  
-	<body>
-        
-        
-        
-        
 
-<p style="text-align:center;">Title</p>
-<input style="display: block; margin: auto;" type="text" name="firstname" size="25"> 
-<p style="text-align:center;">Title</p>
-<textarea name="message"style="display: block; margin: auto; width:200px; height:300px;" >GÖZÜMÜ ÇOX SEVİREM :*</textarea>
-<input style="display: block; margin: auto;" type="submit" value="Submit">
-   
-  
+<head>
+    <meta charset="UTF-8">
+    <title>Etiket Makinesi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+</head>
 
+<body>
 
+    <style>
+        label {
+            color: #ced4da;
+        }
 
+        label,
+        .butns {
+            display: block;
+            margin: auto;
+            text-align: center;
+        }
+
+        .margin-50 {
+            margin: 60px;
+        }
+
+        .margin-30 {
+            margin: 20px;
+        }
+
+        .wrap {
+            display: block;
+            margin: auto;
+            max-width: 480px;
+            padding: 30px;
+        }
+
+        .icon {
+            color: #ced4da;
+            font-size: 1.5em;
+            padding: 20px;
+        }
+
+        p {
+            color: grey;
+        }
+
+        h5 {
+            text-align: center;
+            color: #ced4da;
+            padding-bottom: 30px;
+        }
+
+        footer {
+            padding-top: 20px;
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+
+        .copyright {
+            font-size: .9em;
+        }
         
-        
-        
-        <style>td { vertical-align: top;  }</style>
-        
-<table style="width:100%">
-  <tr>
-    <td>Tags</td>
-    <td>Nums</td> 
-    <td>Total</td> 
-  </tr>
-  <tr>
-    <td id="tags"></td>
-    <td id="nums"></td>
-    <td id="total"></td> 
-  </tr>
-</table>
-	
-	
-	</body>
+        #tags {
+            text-align: center;
+        }
+
+    </style>
+
+    <div class="margin-50"></div>
+    <div class="card wrap">
+        <div id="form-group">
+
+            <ul class="list-group" id="tags"></ul>
+
+            <div id="total"></div>
+
+            <h5 style="text-align: center;"><i class="icon fas fa-tag"></i><br>Etiket Makinesi</h5>
+            <hr>
+            <div class="margin-30"></div>
+
+            <form>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" id="fulltitle" placeholder="Metnin başlığı...">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="fulltext" rows="9" placeholder="Metnin kendisi..."></textarea>
+                </div>
+
+                <p>Etiket makinesi ile metin üzerinde frenkans analizi yapabilir veya metnin etiketlerini otomatik olarak çıkarabilirsiniz</p>
+                <div class="form-group butns">
+                    <button id="tagan" type="submit" class="btn btn-info mb-2">Etiket Analizi</button>
+                    <button id="freqan" type="submit" class="btn btn-primary mb-2">Frekans Analizi</button>
+                </div>
+
+            </form>
+            <hr>
+            <footer>
+
+                <a class="github-button" href="https://github.com/ahuseyn/etiketmakinesi" data-size="small" aria-label="Star ahuseyn/etiketmakinesi on GitHub">Star</a>
+                <br>
+                <p class="copyright">&copy; 2019 <a href="mailto:husen.agaev@gmail.com?Subject=Etiket%20Makinesi" target="_top">Huseyn Aghayev</a></p>
+
+            </footer>
+        </div>
+    </div>
+
+    <div class="margin-50"></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="script.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</body>
+
 </html>
