@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     $('#tagan').click(function (e) {
         e.preventDefault();
-        
+
         var allText = $("#fulltext").val();
         var allTitle = $("#fulltitle").val();
 
@@ -150,15 +150,18 @@ $(document).ready(function () {
             }
         }
 
-
-        //Array conversions
-        var tagKeys = Object.keys(tags);
+        /* Enable to get the score of each tag
         var tagValues = Object.values(tags);
 
         //Sort tag values
         tagValues.sort(function (a, b) {
             return b - a;
         });
+        */
+
+        //Array conversions
+        var tagKeys = Object.keys(tags);
+
 
         //Sort tag keys
         tagKeys.sort(function (a, b) {
@@ -169,12 +172,15 @@ $(document).ready(function () {
         });
 
 
+
+        $('form').hide();
+
         for (x = 1; x <= 15; x++) {
-            $("#tags").append('<li class="list-group-item">' + tagKeys[x] + '</li>');
+            $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
         }
 
 
-
+        $('#new').show();
 
 
 

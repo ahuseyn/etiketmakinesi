@@ -63,51 +63,83 @@
         .copyright {
             font-size: .9em;
         }
-        
+
         #tags {
             text-align: center;
+        }
+
+        #tags li {
+            text-transform: capitalize;
+        }
+
+        #tags-comma {
+            text-align: center;
+        }
+        
+        #tags-comma span {
+            color: white;
+        }
+
+        .tagbox {
+            display: inline-block;
+            padding: 5px 6px;
+            margin: 6px;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            text-transform: capitalize;
+        }
+
+        #new {
+            text-align: center;
+
         }
 
     </style>
 
     <div class="margin-50"></div>
+
+
+
     <div class="card wrap">
-        <div id="form-group">
 
-            <ul class="list-group" id="tags"></ul>
 
-            <div id="total"></div>
 
-            <h5 style="text-align: center;"><i class="icon fas fa-tag"></i><br>Etiket Makinesi</h5>
-            <hr>
-            <div class="margin-30"></div>
 
-            <form>
+        <h5 style="text-align: center;"><i class="icon fas fa-tag"></i><br>Etiket Makinesi</h5>
+        <hr>
+        <div class="margin-30"></div>
+        
+        <div id="tags-comma"></div>
 
-                <div class="form-group">
-                    <input type="text" class="form-control" id="fulltitle" placeholder="Metnin başlığı...">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" id="fulltext" rows="9" placeholder="Metnin kendisi..."></textarea>
-                </div>
+        <form>
 
-                <p>Etiket makinesi ile metin üzerinde frenkans analizi yapabilir veya metnin etiketlerini otomatik olarak çıkarabilirsiniz</p>
-                <div class="form-group butns">
-                    <button id="tagan" type="submit" class="btn btn-info mb-2">Etiket Analizi</button>
-                    <button id="freqan" type="submit" class="btn btn-primary mb-2">Frekans Analizi</button>
-                </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="fulltitle" placeholder="Metnin başlığı...">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="fulltext" rows="9" placeholder="Metnin kendisi..."></textarea>
+            </div>
 
-            </form>
-            <hr>
-            <footer>
+            <p>Etiket makinesi ile metin üzerinde frenkans analizi yapabilir veya metnin etiketlerini otomatik olarak çıkarabilirsiniz</p>
+            <div class="form-group butns">
+                <button id="tagan" type="submit" class="btn btn-info mb-2">Etiket Analizi</button>
+                <button id="freqan" type="submit" class="btn btn-primary mb-2">Frekans Analizi</button>
+                <button id="new" type="submit" class="btn btn-info mb-2" style="display: none">Yeni Analiz</button>
+            </div>
 
-                <a class="github-button" href="https://github.com/ahuseyn/etiketmakinesi" data-size="small" aria-label="Star ahuseyn/etiketmakinesi on GitHub">Star</a>
-                <br>
-                <p class="copyright">&copy; 2019 <a href="mailto:husen.agaev@gmail.com?Subject=Etiket%20Makinesi" target="_top">Huseyn Aghayev</a></p>
+        </form>
 
-            </footer>
-        </div>
+
+        <hr>
+        <footer>
+
+            <a class="github-button" href="https://github.com/ahuseyn/etiketmakinesi" data-size="small" aria-label="Star ahuseyn/etiketmakinesi on GitHub">Star</a>
+            <br>
+            <p class="copyright">&copy; 2019 <a href="mailto:husen.agaev@gmail.com?Subject=Etiket%20Makinesi" target="_top">Huseyn Aghayev</a></p>
+
+        </footer>
     </div>
+
 
     <div class="margin-50"></div>
 
