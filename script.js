@@ -197,7 +197,7 @@ $(document).ready(function () {
 
         $('form').hide();
 
-        for (x = 1; x <= 15; x++) {
+        for (x = 0; x < 15; x++) {
             $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
         }
 
