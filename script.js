@@ -193,7 +193,7 @@ $(document).ready(function () {
         });
         
         console.log(tags);
-
+        console.log(tagKeys);
 
         $('form').hide();
 
