@@ -191,6 +191,8 @@ $(document).ready(function () {
             var countB = tags[b];
             return countB - countA;
         });
+        
+        console.log(tags);
 
 
         $('form').hide();
