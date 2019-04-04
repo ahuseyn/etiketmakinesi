@@ -192,23 +192,24 @@ $(document).ready(function () {
       return countB - countA;
     });
 
-    console.log(tags);
-    console.log(tagKeys);
+
+
 
     $('#wrap').removeClass('scale-in-center');
     $('#wrap').addClass('squeeze');
     $('#loading').delay(390).show(0);
 
-
-setTimeout(function showTags() {
+    setTimeout(function showTags() {
       $('#loading').hide();
 
       for (x = 0; x < 15; x++) {
         $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
-        
-            $('#wrap').hide();
-        $('#new').show();
       }
+
+      $('#wrap').hide();
+      $('#new').show();
+      $("#tags-comma").show();
+      $("#tags-comma").addClass('scale-in-center');
 
     }, 2000);
 
