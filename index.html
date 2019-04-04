@@ -95,13 +95,111 @@
             margin-top: 30px;
 
         }
+		
+		.scale-in-center {
+	-webkit-animation: scale-in-center 0.5s both;
+	        animation: scale-in-center 0.5s both;
+}
+      
+      
+      .squeeze {
+        -webkit-animation: squeeze 0.5s both;
+	        animation: squeeze 0.5s both;
+      }
+      
+		
+      
+      @keyframes squeeze {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+}
+      
+      
+      
+      
+      
+		@-webkit-keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+      
+      
+      
+      
+      
+      .loading {
+        
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.loading:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #ced4da;
+  border-color: #ced4da transparent #ced4da transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+      
+      
+      .copyright a {
+        color: black;
+      }
+      
+      
+      
+      
+      
+
+		
     </style>
 
     <div class="margin-50"></div>
 
 
-
-    <div class="card wrap">
+    <div id="totalWrap" class="card wrap ">
 
 
 
@@ -110,11 +208,14 @@
         <hr>
         <div class="margin-30"></div>
 
-        <div id="tags-comma"></div>
+        <div id="tags-comma" class="scale-in-center"></div>
         <ul id="freqs" class="list-group"></ul>
         <button id="new" type="submit" class="btn btn-info mb-2" style="display: none">Yeni Analiz</button>
 
-        <form>
+      
+      <div id="loading" style="  display: none; position: absolute; z-index: 999; left: 0; right: 0; margin: auto; top: 0; bottom: 0;" class="scale-in-center loading"></div>
+
+        <form id="wrap" class="scale-in-center">
 
             <div class="form-group">
                 <input type="text" class="form-control" id="fulltitle" placeholder="Metnin başlığı...">
