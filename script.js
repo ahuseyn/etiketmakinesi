@@ -29,11 +29,21 @@ $(document).ready(function () {
         }
     */
 
+    var stopWords = [];
+
+    $.getJSON("stopwords.json", function (data) {
+        $.each(data, function (key, value) {
+            stopWords.push(value);
+        });
+    });
+
     $('#tagan').click(function (e) {
         e.preventDefault();
 
         var allTitle = $("#fulltitle").val();
         var allText = $("#fulltext").val();
+
+
 
         var titleClear = allTitle.replace(/[.,\/#!$%\^&\*;:{}=’'“”?\-_`~()]/g, " ");
         var clearText = allText.replace(/[.,\/#!$%\^&\*;:{}=’'“”?\-_`~()]/g, " ");
@@ -191,6 +201,33 @@ $(document).ready(function () {
         });
 
 
+        var tagFil = tagKeys.join(",-,");
+        var tagFilter = tagFil.split(",-,");
+
+        for (x = 0; x < tagFilter.length; x++) {
+
+            var theKey = tagFilter[x];
+
+            for (var u = 0; u < stopWords.length; u++) {
+
+                if (theKey == stopWords[u]) {
+
+                    delete tagFilter[x];
+
+                }
+            }
+        }
+
+
+        var cleanTags = tagFilter.filter(function (el) {
+            return el != null;
+        });
+
+        console.log(tagKeys);
+        console.log(tagFilter);
+        console.log(cleanTags);
+
+
         $('#wrap').removeClass('scale-in-center');
         $('#wrap').addClass('squeeze');
         $('#loading').delay(390).show(0);
@@ -198,17 +235,23 @@ $(document).ready(function () {
         setTimeout(function showTags() {
             $('#loading').hide();
 
-            if (15 < tagKeys.length) {
+
+
+
+            if (15 < tagFilter.length) {
                 for (x = 0; x < 15; x++) {
-                    $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
+                    $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagFilter[x] + '<span>,</span></div>');
                 }
             } else {
 
-                for (x = 0; x < tagKeys.length; x++) {
-                    $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
+                for (x = 0; x < tagFilter.length; x++) {
+                    $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagFilter[x] + '<span>,</span></div>');
                 }
 
             }
+
+
+
             $('#new').show();
             $("#tags-comma").show();
 
@@ -221,6 +264,8 @@ $(document).ready(function () {
         $('#new').click(function () {
             location.reload();
         });
+
+
 
     });
 
