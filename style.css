@@ -9,6 +9,10 @@ label,
     text-align: center;
 }
 
+.list-group-item {
+    text-transform: capitalize;
+}
+
 h5 a {
         text-decoration: none;
     color: inherit;
