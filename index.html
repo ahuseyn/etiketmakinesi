@@ -6,233 +6,22 @@
     <title>Etiket Makinesi</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <style>
-        label {
-            color: #ced4da;
-        }
-
-        label,
-        .butns {
-            display: block;
-            margin: auto;
-            text-align: center;
-        }
-
-        .margin-50 {
-            margin: 60px;
-        }
-
-        .margin-30 {
-            margin: 20px;
-        }
-
-        .wrap {
-            display: block;
-            margin: auto;
-            max-width: 480px;
-            padding: 30px;
-        }
-
-        .icon {
-            color: #ced4da;
-            font-size: 1.5em;
-            padding: 20px;
-        }
-
-        p {
-            color: grey;
-        }
-
-        h5 {
-            text-align: center;
-            color: #ced4da;
-            padding-bottom: 30px;
-        }
-
-        footer {
-            padding-top: 20px;
-            text-align: center;
-            display: block;
-            margin: auto;
-        }
-
-        .copyright {
-            font-size: .9em;
-        }
-
-        #tags {
-            text-align: center;
-        }
-
-        #tags li {
-            text-transform: capitalize;
-        }
-
-        #tags-comma {
-            text-align: center;
-        }
-
-        #tags-comma span {
-            color: white;
-        }
-
-        .tagbox {
-            display: inline-block;
-            padding: 5px 6px;
-            margin: 6px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            text-transform: capitalize;
-        }
-
-        #new {
-            display: block;
-            margin: auto;
-            margin-top: 30px;
-
-        }
-
-        .scale-in-center {
-            -webkit-animation: scale-in-center 0.5s both;
-            animation: scale-in-center 0.5s both;
-        }
-
-
-        .squeeze {
-            -webkit-animation: squeeze 0.5s both;
-            animation: squeeze 0.5s both;
-        }
-
-
-
-        @keyframes squeeze {
-            0% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            100% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-                opacity: 1;
-            }
-        }
-
-
-
-
-
-        @-webkit-keyframes scale-in-center {
-            0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-                opacity: 1;
-            }
-
-            100% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes scale-in-center {
-            0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-                opacity: 1;
-            }
-
-            100% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-
-
-
-
-
-
-        .loading {
-
-            display: inline-block;
-            width: 64px;
-            height: 64px;
-        }
-
-        .loading:after {
-            content: " ";
-            display: block;
-            width: 46px;
-            height: 46px;
-            margin: 1px;
-            border-radius: 50%;
-            border: 5px solid #ced4da;
-            border-color: #ced4da transparent #ced4da transparent;
-            animation: lds-dual-ring 1.2s linear infinite;
-        }
-
-        @keyframes lds-dual-ring {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-
-        .copyright a {
-            color: black;
-        }
-    </style>
-
     <div class="margin-50"></div>
-
 
     <div id="totalWrap" class="card wrap ">
 
-
-
-
-        <h5 style="text-align: center;"><i class="icon fas fa-tag"></i><br>Etiket Makinesi</h5>
+        <h5 style="text-align: center;"><i class="icon fas fa-tag"></i><br><a href="https://ahuseyn.github.io/etiketmakinesi/">Etiket Makinesi</a></h5>
         <hr>
+
         <div class="margin-30"></div>
-
-        
-        
-        
-        
         <div id="tags-comma" style="display: none"></div>
-        
-        
-        
-        
-        
-        
-        <ul id="freqs" class="list-group"></ul>
-        
-        
-        
-        
-        
+        <ul id="freqs" class="list-group" style="display: none"></ul>
         <button id="new" type="submit" class="btn btn-info mb-2" style="display: none">Yeni Analiz</button>
-
-        
-        
-        
-        
-        
-
         <div id="loading" style="  display: none; position: absolute; z-index: 999; left: 0; right: 0; margin: auto; top: 0; bottom: 0;" class="scale-in-center loading"></div>
 
         <form id="wrap" class="scale-in-center">
@@ -251,9 +40,8 @@
             </div>
 
         </form>
-
-
         <hr>
+
         <footer>
 
             <a class="github-button" href="https://github.com/ahuseyn/etiketmakinesi" data-size="small" aria-label="Star ahuseyn/etiketmakinesi on GitHub">Star</a>
@@ -261,6 +49,7 @@
             <p class="copyright">&copy; 2019 <a href="mailto:husen.agaev@gmail.com?Subject=Etiket%20Makinesi" target="_top">Huseyn Aghayev</a></p>
 
         </footer>
+
     </div>
 
 
@@ -270,4 +59,6 @@
     <script src="script.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-</body></html>
+</body>
+
+</html>

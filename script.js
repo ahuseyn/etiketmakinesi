@@ -1,3 +1,12 @@
+/* 
+Author: Huseyn Aghayev
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Dependencies: jQuery [https://jquery.com/]
+
+User Interface built on Twitter Bootstrap [https://getbootstrap.com/]
+*/
+
 $(document).ready(function () {
 
     /* Ajax function is for handling text documents
@@ -40,7 +49,6 @@ $(document).ready(function () {
         var x;
 
 
-
         // Extract Title Words
         var theTitleWord = [];
 
@@ -51,12 +59,8 @@ $(document).ready(function () {
 
                 //Push matching words to "theTitleWord" array
                 theTitleWord.push(titleWords[x].toString().toLowerCase());
-
             }
-
         }
-        console.log(theTitleWord);
-
 
 
         // Get all opening words of sentences
@@ -64,14 +68,16 @@ $(document).ready(function () {
 
         for (x = 0; x < allSentences.length; x++) {
 
-            var firstWord = allSentences[x].match(/^[A-Za-z_ğüşıöçĞÜŞİÖÇ]+/g).toString();
+            var firstWord = allSentences[x].split(/\s+/);
 
-            if (!/^[a-z_ğüşıöç\d]/.test(firstWord)) {
-
-                firstWords.push(firstWord.toLowerCase());
+            if (firstWord[0]) {
+                firstWord = firstWord[0].toString();
+            } else {
+                firstWord = firstWord[1].toString();
             }
-        }
 
+            firstWords.push(firstWord.toLowerCase());
+        }
 
 
         // Get all abbreviations
@@ -89,7 +95,6 @@ $(document).ready(function () {
         }
 
 
-
         // Get frequency of capital case words in the text
         var capitalFrequency = [];
 
@@ -103,13 +108,6 @@ $(document).ready(function () {
 
             }
         }
-
-
-
-
-
-
-
 
 
         // Score title words and push to "tags" array
@@ -162,7 +160,6 @@ $(document).ready(function () {
         }
 
 
-
         // Score capital case words and push to "tags" array 
         for (x = 0; x < capitalFrequency.length; x++) {
 
@@ -192,36 +189,32 @@ $(document).ready(function () {
         });
 
 
+        $('#wrap').removeClass('scale-in-center');
+        $('#wrap').addClass('squeeze');
+        $('#loading').delay(390).show(0);
 
+        setTimeout(function showTags() {
+            $('#loading').hide();
 
-        //        $('#wrap').removeClass('scale-in-center');
-        //        $('#wrap').addClass('squeeze');
-        //        $('#loading').delay(390).show(0);
-        //
-        //        setTimeout(function showTags() {
-        //            $('#loading').hide();
-        //
-        //            if (15 < tagKeys.length) {
-        //                for (x = 0; x < 15; x++) {
-        //                    $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
-        //                }
-        //            } else {
-        //
-        //                for (x = 0; x < tagKeys.length; x++) {
-        //                    $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
-        //                }
-        //
-        //            }
-        //            $('#new').show();
-        //            $("#tags-comma").show();
-        //
-        //            $('#wrap').hide();
-        //
-        //            $("#tags-comma").addClass('scale-in-center');
-        //
-        //        }, 2000);
+            if (15 < tagKeys.length) {
+                for (x = 0; x < 15; x++) {
+                    $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
+                }
+            } else {
 
+                for (x = 0; x < tagKeys.length; x++) {
+                    $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
+                }
 
+            }
+            $('#new').show();
+            $("#tags-comma").show();
+
+            $('#wrap').hide();
+
+            $("#tags-comma").addClass('scale-in-center');
+
+        }, 2000);
 
 
         $('#new').click(function () {
@@ -281,15 +274,28 @@ $(document).ready(function () {
             var countB = totalFrequency[b];
             return countB - countA;
         });
-        console.log(totalFrequency);
 
-        $('form').hide();
 
-        for (x = 0; x < freqKeys.length; x++) {
-            $("#freqs").append(' <li class="list-group-item d-flex justify-content-between align-items-center">' + freqKeys[x] + '<span class="badge badge-primary badge-pill">' + freqValues[x] + '</span></div>');
-        }
+        $('#wrap').removeClass('scale-in-center');
+        $('#wrap').addClass('squeeze');
+        $('#loading').delay(390).show(0);
 
-        $('#new').show();
+        setTimeout(function showTags() {
+            $('#loading').hide();
+
+
+            for (x = 0; x < freqKeys.length; x++) {
+                $("#freqs").append(' <li class="list-group-item d-flex justify-content-between align-items-center">' + freqKeys[x] + '<span class="badge badge-primary badge-pill">' + freqValues[x] + '</span></div>');
+            }
+
+            $('#new').show();
+            $("#freqs").show();
+
+            $('#wrap').hide();
+
+            $("#freqs").addClass('scale-in-center');
+
+        }, 2000);
 
         $('#new').click(function () {
             location.reload();
