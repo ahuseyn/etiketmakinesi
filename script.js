@@ -1,5 +1,6 @@
 /* 
 Author: Huseyn Aghayev
+Version: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Dependencies: jQuery [https://jquery.com/]
@@ -41,9 +42,9 @@ $(document).ready(function () {
         var titleWords = titleClear.split(/\s+/);
         var allSentences = allText.split(/[.?!]\s/g);
 
-        var titleScore = 9;
+        var titleScore = 5;
         var upperScore = 3;
-        var capitScore = 3;
+        var capitScore = 2;
         var firstScore = 3;
 
         var x;
@@ -55,7 +56,7 @@ $(document).ready(function () {
         for (x = 0; x < titleWords.length; x++) {
 
             //Only words longer than 2 letter and starting with capital case
-            if (/^[A-Z]/.test(titleWords[x])) {
+            if (/^[A-Z_ĞÜŞİÖÇ]/.test(titleWords[x])) {
 
                 //Push matching words to "theTitleWord" array
                 theTitleWord.push(titleWords[x].toString().toLowerCase());
@@ -63,12 +64,13 @@ $(document).ready(function () {
         }
 
 
+
         // Get all opening words of sentences
         var firstWords = [];
 
         for (x = 0; x < allSentences.length; x++) {
 
-            var firstWord = allSentences[x].split(/\s+/);
+            var firstWord = allSentences[x].replace(/[.,\/#!$%\^&\*;:{}=’'“”?\-_`~()]/g, " ").split(/\s+/);
 
             if (firstWord[0]) {
                 firstWord = firstWord[0].toString();
@@ -102,7 +104,7 @@ $(document).ready(function () {
 
             var c = allWords[x];
 
-            if (c.length > 2 && /^[A-Z]/.test(c)) {
+            if (c.length > 2 && /^[A-Z_ĞÜŞİÖÇ]/.test(c)) {
 
                 capitalFrequency.push(c.toString().toLowerCase());
 
@@ -215,7 +217,6 @@ $(document).ready(function () {
             $("#tags-comma").addClass('scale-in-center');
 
         }, 2000);
-
 
         $('#new').click(function () {
             location.reload();
