@@ -29,25 +29,30 @@ $(document).ready(function () {
         }
     */
 
+    var cleaner = /[.,\/#!$%\^&\*;:{}=’‘'“”"?\-_`~()]/g;
     var stopWords = [];
 
+    // Get stopword array from external JSON file
     $.getJSON("stopwords.json", function (data) {
         $.each(data, function (key, value) {
             stopWords.push(value);
         });
     });
 
+    // Tag analysis button triggers
     $('#tagan').click(function (e) {
         e.preventDefault();
-
 
         var allTitle = $("#fulltitle").val();
         var allText = $("#fulltext").val();
 
+
+
+        // Check if any input entered
         if (allText) {
 
-            var titleClear = allTitle.replace(/[.,\/#!$%\^&\*;:{}=’‘'“”"?\-_`~()]/g, " ");
-            var clearText = allText.replace(/[.,\/#!$%\^&\*;:{}=’‘'“”"?\-_`~()]/g, " ");
+            var titleClear = allTitle.replace(cleaner, " ");
+            var clearText = allText.replace(cleaner, " ");
 
             var allWords = clearText.split(/\s+/);
             var titleWords = titleClear.split(/\s+/);
@@ -59,6 +64,13 @@ $(document).ready(function () {
             var firstScore = 3;
 
             var x;
+
+
+
+
+
+
+
 
 
             // Extract Title Words
@@ -81,16 +93,18 @@ $(document).ready(function () {
 
             for (x = 0; x < allSentences.length; x++) {
 
-                var firstWord = allSentences[x].replace(/[.,\/#!$%\^&\*;:{}=’‘'“”"?\-_`~()]/g, " ").split(/\s+/);
+                var theSentence = allSentences[x].toString();
+                theSentence = theSentence.replace(cleaner, "");
+                theSentence = theSentence.toLowerCase();
+
+                var firstWord = theSentence.split(/\s+/);
 
                 if (firstWord[0]) {
-                    firstWord = firstWord[0].toString();
-                } else {
-                    firstWord = firstWord[1].toString();
+                    firstWords.push(firstWord[0]);
                 }
-
-                firstWords.push(firstWord.toLowerCase());
             }
+
+
 
 
             // Get all abbreviations
@@ -115,7 +129,7 @@ $(document).ready(function () {
 
                 var c = allWords[x];
 
-                if (c.length > 2 && /^[A-Z_ĞÜŞİÖÇ]/.test(c)) {
+                if (/^[A-Z_ĞÜŞİÖÇ]/.test(c)) {
 
                     capitalFrequency.push(c.toString().toLowerCase());
 
@@ -188,6 +202,17 @@ $(document).ready(function () {
                 }
             }
 
+            // Remove stopwords from results
+            for (x = 0; x < stopWords.length; x++) {
+
+                var n = stopWords[x];
+
+                if (tags[n]) {
+
+                    delete tags[n];
+
+                }
+            }
 
             //Array conversions
             var tagKeys = Object.keys(tags);
@@ -202,32 +227,6 @@ $(document).ready(function () {
             });
 
 
-            var tagFil = tagKeys.join(",-,");
-            var tagFilter = tagFil.split(",-,");
-
-            for (x = 0; x < tagFilter.length; x++) {
-
-                var theKey = tagFilter[x];
-
-                for (var u = 0; u < stopWords.length; u++) {
-
-                    if (theKey == stopWords[u]) {
-
-                        delete tagFilter[x];
-
-                    }
-                }
-            }
-
-
-            var cleanTags = tagFilter.filter(function (el) {
-                return el != null;
-            });
-
-            console.log(tagKeys);
-            console.log(tagFilter);
-            console.log(cleanTags);
-
 
             $('#wrap').removeClass('scale-in-center');
             $('#wrap').addClass('squeeze');
@@ -236,14 +235,14 @@ $(document).ready(function () {
             setTimeout(function showTags() {
                 $('#loading').hide();
 
-                if (15 < tagFilter.length) {
+                if (15 < tagKeys.length) {
                     for (x = 0; x < 15; x++) {
-                        $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagFilter[x] + '<span>,</span></div>');
+                        $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
                     }
                 } else {
 
-                    for (x = 0; x < tagFilter.length; x++) {
-                        $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagFilter[x] + '<span>,</span></div>');
+                    for (x = 0; x < tagKeys.length; x++) {
+                        $("#tags-comma").append('<div class="tagbox">&nbsp;' + tagKeys[x] + '<span>,</span></div>');
                     }
 
                 }
@@ -274,7 +273,7 @@ $(document).ready(function () {
 
         if ($("#fulltext").val()) {
 
-            var clearText = allText.replace(/[.,\/#!$%\^&\*;:{}=’'“”"‘?\-_`~()]/g, " ").toLowerCase();
+            var clearText = allText.replace(cleaner, " ").toLowerCase();
             var allWords = clearText.split(/\s+/);
             var totalFrequency = {};
 
@@ -301,7 +300,7 @@ $(document).ready(function () {
 
             console.log(totalFrequency);
 
-
+            // Remove stopwords from results
             for (x = 0; x < stopWords.length; x++) {
 
                 var m = stopWords[x];
